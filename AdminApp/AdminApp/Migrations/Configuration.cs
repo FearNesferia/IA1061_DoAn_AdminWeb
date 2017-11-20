@@ -20,8 +20,8 @@ namespace AdminApp.Migrations
 
         protected override void Seed(AdminApp.Models.DataHandler.PakageDBContext context)
         {
-            this.InsertFromTxt("E:/Work/anomalousTrafficTraining.txt");
-            this.InsertFromTxt("E:/Work/normalTrafficTraining.txt");
+            this.InsertFromTxt("./Data/anomalousTrafficTraining.txt");
+            this.InsertFromTxt("./Data/normalTrafficTraining.txt");
 
             //  This method will be called after migrating to the latest version.
 
@@ -61,10 +61,9 @@ namespace AdminApp.Migrations
                 request.NumberOfLettersInArguments = argument.Count(x => char.IsLetter(x));
                 request.NumberOfOtherCharInArguments = request.LengthOfArguments - (request.NumberOfDigitsInArguments + request.NumberOfLettersInArguments + request.NumberOfSpecialCharInArguments);
                 request.Id = Math.Abs((path + argument).GetHashCode());
+                request.IsChecked = true;
                 context.TrafficPackages.AddOrUpdate(x => x.Id,request);
-                Trace.WriteLine("Updateting to db");
                 context.SaveChanges();
-                Trace.WriteLine("Done!");
             }
             
         }

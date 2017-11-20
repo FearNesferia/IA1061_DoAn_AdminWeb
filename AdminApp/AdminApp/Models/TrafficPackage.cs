@@ -23,6 +23,8 @@ namespace IISServerModules.Models
         public string Path { get; set; }
         public string QueryString { get; set; }
         public string Payload { get; set; }
+        [Required]
+        public bool IsChecked { get; set; }
 
 
         //properties for training 
@@ -87,7 +89,7 @@ namespace IISServerModules.Models
         {
             string specialChar = " !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
             LengthOfPath = path.Length;
-            LengthOfRequest = path.Length + queryString.Length + 1;
+            LengthOfRequest = payload.Length;
             LengthOfArguments = queryString.Length;
             NumberOfDigitsInPath = path.Count(x => char.IsDigit(x));
             NumberOfSepicalCharInPath = path.Count(x => specialChar.Contains(x));
@@ -100,6 +102,7 @@ namespace IISServerModules.Models
 
             CreatedDate = DateTime.Now;
             Id = Math.Abs((path + queryString + payload).GetHashCode());
+            IsChecked = false;
             //HOW TO ASSIGN THIS SHIT 
             //IsAttack = false;
         }
@@ -123,6 +126,7 @@ namespace IISServerModules.Models
             NumberOfLettersCharInPath = numberOfLettersCharInPath;
             NumberOfSepicalCharInPath = numberOfSepicalCharInPath;
             Id = Math.Abs((path + queryString + payload).GetHashCode());
+            IsChecked = false;
         }
     }
 }

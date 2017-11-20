@@ -139,14 +139,14 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\ApiControllers\ValuesController.cs" />
+    <Compile Include="Controllers\ApiControllers\TrafficPakagesController.cs" />
     <Compile Include="Controllers\WebControllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201711200906113_miv1.cs" />
-    <Compile Include="Migrations\201711200906113_miv1.Designer.cs">
-      <DependentUpon>201711200906113_miv1.cs</DependentUpon>
+    <Compile Include="Migrations\201711201648401_ririchiyov1.cs" />
+    <Compile Include="Migrations\201711201648401_ririchiyov1.Designer.cs">
+      <DependentUpon>201711201648401_ririchiyov1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DataHandler\PakageDBContext.cs" />
@@ -172,8 +172,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201711200906113_miv1.resx">
-      <DependentUpon>201711200906113_miv1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711201648401_ririchiyov1.resx">
+      <DependentUpon>201711201648401_ririchiyov1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
