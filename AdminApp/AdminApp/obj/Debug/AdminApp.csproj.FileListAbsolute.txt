@@ -278,3 +278,5 @@ E:\Work\DoAn\Projects\IA1061_AdminApp\IA1061_DoAn_AdminWeb\AdminApp\AdminApp\obj
 E:\Work\DoAn\Projects\IA1061_AdminApp\IA1061_DoAn_AdminWeb\AdminApp\AdminApp\obj\Debug\AdminApp.csproj.CoreCompileInputs.cache
 E:\Work\DoAn\Projects\IA1061_AdminApp\IA1061_DoAn_AdminWeb\AdminApp\AdminApp\obj\Debug\AdminApp.dll
 E:\Work\DoAn\Projects\IA1061_AdminApp\IA1061_DoAn_AdminWeb\AdminApp\AdminApp\obj\Debug\AdminApp.pdb
+E:\Work\DoAn\Projects\IA1061_AdminApp\IA1061_DoAn_AdminWeb\AdminApp\AdminApp\bin\RserveCLI2.dll
+E:\Work\DoAn\Projects\IA1061_AdminApp\IA1061_DoAn_AdminWeb\AdminApp\AdminApp\bin\RserveCLI2.xml

@@ -197,3 +197,5 @@ G:\DA\4\IA1061_DoAn_AdminWeb\AdminApp\AdminApp\obj\Release\AdminApp.dll
 G:\DA\4\IA1061_DoAn_AdminWeb\AdminApp\AdminApp\obj\Release\AdminApp.pdb
 G:\DA\4\IA1061_DoAn_AdminWeb\AdminApp\AdminApp\bin\RserveCLI2.dll
 G:\DA\4\IA1061_DoAn_AdminWeb\AdminApp\AdminApp\bin\RserveCLI2.xml
+E:\Work\DoAn\Projects\IA1061_AdminApp\IA1061_DoAn_AdminWeb\AdminApp\AdminApp\bin\RserveCLI2.dll
+E:\Work\DoAn\Projects\IA1061_AdminApp\IA1061_DoAn_AdminWeb\AdminApp\AdminApp\bin\RserveCLI2.xml
