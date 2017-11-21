@@ -17,20 +17,11 @@ namespace AdminApp.Controllers.ApiControllers
     {
         private PakageDBContext context = new PakageDBContext();
         [HttpPost]
-        [Route("v1/api/TrafficPakages/")]
-        public IHttpActionResult Post([FromBody]HttpRequest request)
+        [Route("v1/api/TrafficPakages")]
+        public IHttpActionResult Post([FromBody]TrafficPackageModel request)
         {
-            string path = request.Path;
-            string queryString = request.Url.Query;
-            string payload;
-            using (Stream receiveStream = request.InputStream)
-            {
-                using (StreamReader readStream = new StreamReader(receiveStream, Encoding.UTF8))
-                {
-                    payload = readStream.ReadToEnd();
-                }
-            }
-            TrafficPackage package = new TrafficPackage(path, queryString, payload);
+
+            TrafficPackage package = new TrafficPackage(request.Path, request.QueryString, request.Payload);
             TrafficPackage tp = this.context.TrafficPackages.FirstOrDefault(x => x.Id == package.Id);
 
             if (tp != null)
@@ -39,7 +30,7 @@ namespace AdminApp.Controllers.ApiControllers
             }
             this.context.TrafficPackages.Add(package);
             // Call R here
-
+            package.IsAttack = true;
             return Json(new { isAttack = package.IsAttack });
         }
     }
