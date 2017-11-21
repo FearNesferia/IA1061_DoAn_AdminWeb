@@ -1,5 +1,6 @@
 ﻿using AdminApp.Models;
 using AdminApp.Models.DataHandler;
+using AdminApp.Models.DataHandler.R;
 using IISServerModules.Models;
 using System;
 using System.Collections.Generic;
@@ -29,8 +30,11 @@ namespace AdminApp.Controllers.ApiControllers
                 return Json(new { isAttack = tp.IsAttack });
             }
             this.context.TrafficPackages.Add(package);
+
             // Call R here
-            package.IsAttack = true;
+            AnalyzePacket rHandler = new AnalyzePacket();
+            package.IsAttack = rHandler.GetAnalyzePacketResult(new int[] { package.LengthOfArguments, package.NumberOfArguments, package.NumberOfDigitsInArguments, package.NumberOfOtherCharInArguments, package.NumberOfDigitsInPath, package.NumberOfSpecialCharInArguments, package.LengthOfPath, package.LengthOfRequest, package.NumberOfLettersInArguments, package.NumberOfLettersCharInPath, package.NumberOfSepicalCharInPath });
+
             return Json(new { isAttack = package.IsAttack });
         }
     }
