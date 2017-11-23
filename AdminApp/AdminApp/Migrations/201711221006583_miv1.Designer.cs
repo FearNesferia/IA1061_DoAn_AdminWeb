@@ -7,13 +7,13 @@ namespace AdminApp.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class ririchiyov1 : IMigrationMetadata
+    public sealed partial class miv1 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ririchiyov1));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(miv1));
         
         string IMigrationMetadata.Id
         {
-            get { return "201711201648401_ririchiyov1"; }
+            get { return "201711221006583_miv1"; }
         }
         
         string IMigrationMetadata.Source

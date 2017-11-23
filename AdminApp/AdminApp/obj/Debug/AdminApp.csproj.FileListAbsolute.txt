@@ -272,11 +272,11 @@ E:\Work\DoAn\Projects\IA1061_AdminApp\IA1061_DoAn_AdminWeb\AdminApp\AdminApp\bin
 E:\Work\DoAn\Projects\IA1061_AdminApp\IA1061_DoAn_AdminWeb\AdminApp\AdminApp\bin\System.Net.Http.Formatting.xml
 E:\Work\DoAn\Projects\IA1061_AdminApp\IA1061_DoAn_AdminWeb\AdminApp\AdminApp\bin\System.Web.Http.xml
 E:\Work\DoAn\Projects\IA1061_AdminApp\IA1061_DoAn_AdminWeb\AdminApp\AdminApp\bin\System.Web.Http.WebHost.xml
-E:\Work\DoAn\Projects\IA1061_AdminApp\IA1061_DoAn_AdminWeb\AdminApp\AdminApp\obj\Debug\AdminApp.csprojResolveAssemblyReference.cache
-E:\Work\DoAn\Projects\IA1061_AdminApp\IA1061_DoAn_AdminWeb\AdminApp\AdminApp\obj\Debug\AdminApp.Migrations.ririchiyov1.resources
-E:\Work\DoAn\Projects\IA1061_AdminApp\IA1061_DoAn_AdminWeb\AdminApp\AdminApp\obj\Debug\AdminApp.csproj.GenerateResource.Cache
 E:\Work\DoAn\Projects\IA1061_AdminApp\IA1061_DoAn_AdminWeb\AdminApp\AdminApp\obj\Debug\AdminApp.csproj.CoreCompileInputs.cache
 E:\Work\DoAn\Projects\IA1061_AdminApp\IA1061_DoAn_AdminWeb\AdminApp\AdminApp\obj\Debug\AdminApp.dll
 E:\Work\DoAn\Projects\IA1061_AdminApp\IA1061_DoAn_AdminWeb\AdminApp\AdminApp\obj\Debug\AdminApp.pdb
 E:\Work\DoAn\Projects\IA1061_AdminApp\IA1061_DoAn_AdminWeb\AdminApp\AdminApp\bin\RserveCLI2.dll
 E:\Work\DoAn\Projects\IA1061_AdminApp\IA1061_DoAn_AdminWeb\AdminApp\AdminApp\bin\RserveCLI2.xml
+E:\Work\DoAn\Projects\IA1061_AdminApp\IA1061_DoAn_AdminWeb\AdminApp\AdminApp\obj\Debug\AdminApp.Migrations.miv1.resources
+E:\Work\DoAn\Projects\IA1061_AdminApp\IA1061_DoAn_AdminWeb\AdminApp\AdminApp\obj\Debug\AdminApp.csproj.GenerateResource.Cache
+E:\Work\DoAn\Projects\IA1061_AdminApp\IA1061_DoAn_AdminWeb\AdminApp\AdminApp\obj\Debug\AdminApp.csprojResolveAssemblyReference.cache

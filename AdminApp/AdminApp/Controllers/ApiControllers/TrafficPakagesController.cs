@@ -26,25 +26,31 @@ namespace AdminApp.Controllers.ApiControllers
         }
 
         [HttpPost]
-        [Route("v1/api/TrafficPakages")]
+        [Route("v1/api/TrafficPackages")]
         public IHttpActionResult Post([FromBody]TrafficPackageModel request)
         {
-
+            Website web = this.context.Websites.FirstOrDefault(x => x.Url == request.WebsiteUrl);
+            if (web == default(Website))
+            {
+                return BadRequest();
+            }
             TrafficPackage package = new TrafficPackage(request.Path, request.QueryString, request.Payload);
-            //TrafficPackage tp = this.context.TrafficPackages.FirstOrDefault(x => x.Id == package.Id);
+            package.WebsiteId = web.WebsiteId;
+            package.Website = web;
+            TrafficPackage tp = this.context.TrafficPackages.FirstOrDefault(x => x.TrafficPackageId == package.TrafficPackageId);
 
-            //if (tp != null)
-            //{
-            //    return Json(new { isAttack = tp.IsAttack });
-            //}
-            //this.context.TrafficPackages.Add(package);
-
+            if (tp != null)
+            {
+                return Json(new { isAttack = tp.IsAttack, isDetectMode = web.IsDetecMode });
+            }
+            this.context.TrafficPackages.Add(package);
+            this.context.SaveChanges();
             // Call R here
             AnalyzePacket rHandler = new AnalyzePacket();
             package.IsAttack = rHandler.GetAnalyzePacketResult(new int[] { package.LengthOfArguments, package.NumberOfArguments, package.NumberOfDigitsInArguments, package.NumberOfOtherCharInArguments, package.NumberOfDigitsInPath, package.NumberOfSpecialCharInArguments, package.LengthOfPath, package.LengthOfRequest, package.NumberOfLettersInArguments, package.NumberOfLettersCharInPath, package.NumberOfSepicalCharInPath, 0 });
             rHandler.DisposeConnection();
 
-            return Json(new { isAttack = package.IsAttack });
+            return Json(new { isAttack = package.IsAttack, isDetectMode = web.IsDetecMode });
         }
     }
 }

@@ -10,5 +10,6 @@ namespace AdminApp.Models.DataHandler
     public class PakageDBContext:DbContext
     {
         public DbSet<TrafficPackage> TrafficPackages { get; set; }
+        public DbSet<Website> Websites { get; set; }
     }
 }

@@ -145,13 +145,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ApiControllers\TrafficPakagesController.cs" />
-    <Compile Include="Controllers\WebControllers\HomeController.cs" />
+    <Compile Include="Controllers\WebControllers\TrafficPackagesController.cs" />
+    <Compile Include="Controllers\WebControllers\WebsitesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201711201648401_ririchiyov1.cs" />
-    <Compile Include="Migrations\201711201648401_ririchiyov1.Designer.cs">
-      <DependentUpon>201711201648401_ririchiyov1.cs</DependentUpon>
+    <Compile Include="Migrations\201711221006583_miv1.cs" />
+    <Compile Include="Migrations\201711221006583_miv1.Designer.cs">
+      <DependentUpon>201711221006583_miv1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DataHandler\PakageDBContext.cs" />
@@ -159,6 +160,7 @@
     <Compile Include="Models\DataHandler\R\UpdateData.cs" />
     <Compile Include="Models\TrafficPackage.cs" />
     <Compile Include="Models\TrafficPackageModel.cs" />
+    <Compile Include="Models\Website.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -166,9 +168,18 @@
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.2.1.min.map" />
+    <Content Include="Views\TrafficPackages\Create.cshtml" />
+    <Content Include="Views\TrafficPackages\Delete.cshtml" />
+    <Content Include="Views\TrafficPackages\Details.cshtml" />
+    <Content Include="Views\TrafficPackages\Edit.cshtml" />
+    <Content Include="Views\TrafficPackages\Index.cshtml" />
+    <Content Include="Views\Websites\Create.cshtml" />
+    <Content Include="Views\Websites\Delete.cshtml" />
+    <Content Include="Views\Websites\Details.cshtml" />
+    <Content Include="Views\Websites\Edit.cshtml" />
+    <Content Include="Views\Websites\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -180,8 +191,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201711201648401_ririchiyov1.resx">
-      <DependentUpon>201711201648401_ririchiyov1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711221006583_miv1.resx">
+      <DependentUpon>201711221006583_miv1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

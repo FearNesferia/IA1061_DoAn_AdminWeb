@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AdminApp.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace IISServerModules.Models
 {
+    [Table("TrafficPackages")]
     public class TrafficPackage
     {
 
@@ -15,7 +17,7 @@ namespace IISServerModules.Models
 
         //primary key
         [Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int Id { get; set; }
+        public int TrafficPackageId { get; set; }
 
         //properties for call primary key and show on web
         [Required]
@@ -53,8 +55,17 @@ namespace IISServerModules.Models
         [Required]
         public int NumberOfSepicalCharInPath { get; set; }
 
+        //relation ship
+        [Display(Name = "Website")]
+        public int WebsiteId { get; set; }
 
+
+        [ForeignKey("WebsiteId")]
+        public Website Website { get; set; }
         #endregion
+
+
+        #region constructure
         /*
          constructor
          Example 1: 
@@ -87,6 +98,14 @@ namespace IISServerModules.Models
 
         public TrafficPackage(string path, string queryString, string payload)
         {
+            //check null
+            path = path == null ? "" : path;
+            queryString = queryString == null ? "" : queryString;
+            payload = payload == null ? "" : payload;
+
+            this.Path = path;
+            this.QueryString = queryString;
+            this.Payload = payload;
             string specialChar = " !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
             LengthOfPath = path.Length;
             LengthOfRequest = payload.Length;
@@ -101,32 +120,14 @@ namespace IISServerModules.Models
             NumberOfOtherCharInArguments = LengthOfArguments - (NumberOfDigitsInArguments + NumberOfLettersInArguments + NumberOfSpecialCharInArguments);
 
             CreatedDate = DateTime.Now;
-            Id = Math.Abs((path + queryString + payload).GetHashCode());
+            string uniqueString = $"path:{path}queryString{queryString}payload{Payload}";
+            TrafficPackageId = Math.Abs(uniqueString.GetHashCode());
             IsChecked = false;
-            //HOW TO ASSIGN THIS SHIT 
-            //IsAttack = false;
+            IsAttack = false;
         }
 
-        public TrafficPackage(DateTime createdDate, string path, string queryString, string payload, bool isAttack, int lengthOfArguments, int numberOfArguments, int numberOfDigitsInArguments, int numberOfOtherCharInArguments, int numberOfDigitsInPath, int numberOfSpecialCharInArguments, int lengthOfPath, int lengthOfRequest, int numberOfLettersInArguments, int numberOfLettersCharInPath, int numberOfSepicalCharInPath)
-        {
-            CreatedDate = createdDate;
-            Path = path;
-            QueryString = queryString;
-            Payload = payload;
-            IsAttack = isAttack;
-            LengthOfArguments = lengthOfArguments;
-            NumberOfArguments = numberOfArguments;
-            NumberOfDigitsInArguments = numberOfDigitsInArguments;
-            NumberOfOtherCharInArguments = numberOfOtherCharInArguments;
-            NumberOfDigitsInPath = numberOfDigitsInPath;
-            NumberOfSpecialCharInArguments = numberOfSpecialCharInArguments;
-            LengthOfPath = lengthOfPath;
-            LengthOfRequest = lengthOfRequest;
-            NumberOfLettersInArguments = numberOfLettersInArguments;
-            NumberOfLettersCharInPath = numberOfLettersCharInPath;
-            NumberOfSepicalCharInPath = numberOfSepicalCharInPath;
-            Id = Math.Abs((path + queryString + payload).GetHashCode());
-            IsChecked = false;
-        }
+        #endregion
+
+
     }
 }

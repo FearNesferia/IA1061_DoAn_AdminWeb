@@ -3,7 +3,7 @@ namespace AdminApp.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class ririchiyov1 : DbMigration
+    public partial class miv1 : DbMigration
     {
         public override void Up()
         {
@@ -11,7 +11,7 @@ namespace AdminApp.Migrations
                 "dbo.TrafficPackages",
                 c => new
                     {
-                        Id = c.Int(nullable: false),
+                        TrafficPackageId = c.Int(nullable: false),
                         CreatedDate = c.DateTime(nullable: false),
                         Path = c.String(),
                         QueryString = c.String(),
@@ -29,13 +29,29 @@ namespace AdminApp.Migrations
                         NumberOfLettersInArguments = c.Int(nullable: false),
                         NumberOfLettersCharInPath = c.Int(nullable: false),
                         NumberOfSepicalCharInPath = c.Int(nullable: false),
+                        WebsiteId = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.Id);
+                .PrimaryKey(t => t.TrafficPackageId)
+                .ForeignKey("dbo.Websites", t => t.WebsiteId, cascadeDelete: true)
+                .Index(t => t.WebsiteId);
+            
+            CreateTable(
+                "dbo.Websites",
+                c => new
+                    {
+                        WebsiteId = c.Int(nullable: false, identity: true),
+                        Url = c.String(nullable: false),
+                        IsDetecMode = c.Boolean(nullable: false),
+                    })
+                .PrimaryKey(t => t.WebsiteId);
             
         }
         
         public override void Down()
         {
+            DropForeignKey("dbo.TrafficPackages", "WebsiteId", "dbo.Websites");
+            DropIndex("dbo.TrafficPackages", new[] { "WebsiteId" });
+            DropTable("dbo.Websites");
             DropTable("dbo.TrafficPackages");
         }
     }

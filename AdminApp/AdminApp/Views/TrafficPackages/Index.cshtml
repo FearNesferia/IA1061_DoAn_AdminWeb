@@ -1,0 +1,69 @@
+﻿@model IEnumerable<IISServerModules.Models.TrafficPackage>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th class="col-md-1">
+            @Html.DisplayNameFor(model => model.Website.Url)
+        </th>
+        <th class="col-md-1">
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </th>
+        <th class="col-md-1">
+            @Html.DisplayNameFor(model => model.Path)
+        </th>
+        <th class="col-md-3">
+            @Html.DisplayNameFor(model => model.QueryString)
+        </th>
+        <th class="col-md-3">
+            @Html.DisplayNameFor(model => model.Payload)
+        </th>
+        <th class="col-md-1">
+            @Html.DisplayNameFor(model => model.IsChecked)
+        </th>
+        <th class="col-md-1">
+            @Html.DisplayNameFor(model => model.IsAttack)
+        </th>
+        <th class="col-md-1"></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Website.Url)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Path)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QueryString)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Payload)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsChecked)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsAttack)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.TrafficPackageId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.TrafficPackageId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.TrafficPackageId })
+        </td>
+    </tr>
+}
+
+</table>
