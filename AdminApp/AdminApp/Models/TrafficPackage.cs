@@ -107,19 +107,21 @@ namespace IISServerModules.Models
             this.QueryString = queryString;
             this.Payload = payload;
             string specialChar = " !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
+
+            string arg = string.IsNullOrEmpty(queryString) ? payload : queryString;
             LengthOfPath = path.Length;
             LengthOfRequest = payload.Length;
-            LengthOfArguments = queryString.Length;
+            LengthOfArguments = arg.Length;
             NumberOfDigitsInPath = path.Count(x => char.IsDigit(x));
             NumberOfSepicalCharInPath = path.Count(x => specialChar.Contains(x));
             NumberOfLettersCharInPath = path.Count(x => char.IsLetter(x));
-            NumberOfArguments = (queryString.Length != 0) ? queryString.Split('&').Length : 0;
-            NumberOfDigitsInArguments = queryString.Count(x => char.IsDigit(x));
-            NumberOfSpecialCharInArguments = queryString.Count(x => specialChar.Contains(x));
-            NumberOfLettersInArguments = queryString.Count(x => char.IsLetter(x));
+            NumberOfArguments = (arg.Length != 0) ? arg.Split('&').Length : 0;
+            NumberOfDigitsInArguments = arg.Count(x => char.IsDigit(x));
+            NumberOfSpecialCharInArguments = arg.Count(x => specialChar.Contains(x));
+            NumberOfLettersInArguments = arg.Count(x => char.IsLetter(x));
             NumberOfOtherCharInArguments = LengthOfArguments - (NumberOfDigitsInArguments + NumberOfLettersInArguments + NumberOfSpecialCharInArguments);
-
             CreatedDate = DateTime.Now;
+
             string uniqueString = $"path:{path}queryString{queryString}payload{Payload}";
             TrafficPackageId = Math.Abs(uniqueString.GetHashCode());
             IsChecked = false;

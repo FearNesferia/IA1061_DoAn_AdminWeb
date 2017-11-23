@@ -16,7 +16,7 @@ namespace AdminApp.Models.DataHandler.R
         {
             try
             {
-                connection = RConnection.Connect("11.23.58.53", port: 6311);
+                connection = RConnection.Connect("fearnesferia.ddns.net", port: 6311);
             }
             catch (Exception ex)
             {

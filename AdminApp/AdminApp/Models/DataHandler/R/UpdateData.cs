@@ -10,13 +10,14 @@ namespace AdminApp.Models.DataHandler.R
 {
     public class UpdateData
     {
-        public static void UpdateDataFunc()
+        public static int UpdateDataFunc()
         {
             try
             {
-                RConnection connection = RConnection.Connect(addr: new IPAddress(new byte[] { 11, 23, 58, 53 }), port: 6312, credentials: new NetworkCredential("train", "Zaq@12345"));
-                connection.VoidEval("source('C:/Users/Administrator/Documents/RScript/ConnectSQL_SaveNewRtree.R')");
+                RConnection connection = RConnection.Connect("fearnesferia.ddns.net", port: 6312);
+                Sexp result = connection.Eval("source('C:/Users/Administrator/Documents/RScript/ConnectSQL_SaveNewRtree.R')");
                 connection.Dispose();
+                return (int)result[0];
             }
             catch (Exception)
             {

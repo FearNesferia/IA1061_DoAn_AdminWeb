@@ -1,0 +1,168 @@
+﻿@model IISServerModules.Models.TrafficPackage
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>TrafficPackage</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Website.Url)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Website.Url)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Path)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Path)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QueryString)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QueryString)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Payload)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Payload)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsChecked)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsChecked)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsAttack)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsAttack)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LengthOfArguments)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LengthOfArguments)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfArguments)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfArguments)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfDigitsInArguments)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfDigitsInArguments)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfOtherCharInArguments)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfOtherCharInArguments)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfDigitsInPath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfDigitsInPath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfSpecialCharInArguments)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfSpecialCharInArguments)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LengthOfPath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LengthOfPath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LengthOfRequest)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LengthOfRequest)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfLettersInArguments)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfLettersInArguments)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfLettersCharInPath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfLettersCharInPath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfSepicalCharInPath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfSepicalCharInPath)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

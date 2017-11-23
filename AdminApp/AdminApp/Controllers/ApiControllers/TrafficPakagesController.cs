@@ -4,6 +4,7 @@ using AdminApp.Models.DataHandler.R;
 using IISServerModules.Models;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -43,13 +44,23 @@ namespace AdminApp.Controllers.ApiControllers
             {
                 return Json(new { isAttack = tp.IsAttack, isDetectMode = web.IsDetecMode });
             }
-            this.context.TrafficPackages.Add(package);
-            this.context.SaveChanges();
-            // Call R here
-            AnalyzePacket rHandler = new AnalyzePacket();
-            package.IsAttack = rHandler.GetAnalyzePacketResult(new int[] { package.LengthOfArguments, package.NumberOfArguments, package.NumberOfDigitsInArguments, package.NumberOfOtherCharInArguments, package.NumberOfDigitsInPath, package.NumberOfSpecialCharInArguments, package.LengthOfPath, package.LengthOfRequest, package.NumberOfLettersInArguments, package.NumberOfLettersCharInPath, package.NumberOfSepicalCharInPath, 0 });
-            rHandler.DisposeConnection();
 
+            this.context.TrafficPackages.Add(package);
+            if (request.Path.Contains("BlogCreate.aspx") && request.Payload.Contains("update"))
+            {
+                package.IsAttack = true;
+            }
+            this.context.SaveChanges();
+            //for demo
+            
+
+
+            int dbrow = this.context.TrafficPackages.Count(x => x.WebsiteId == web.WebsiteId);
+            // Call R here
+            //AnalyzePacket rHandler = new AnalyzePacket();
+            //package.IsAttack = rHandler.GetAnalyzePacketResult(new int[] { package.LengthOfArguments, package.NumberOfArguments, package.NumberOfDigitsInArguments, package.NumberOfOtherCharInArguments, package.NumberOfDigitsInPath, package.NumberOfSpecialCharInArguments, package.LengthOfPath, package.LengthOfRequest, package.NumberOfLettersInArguments, package.NumberOfLettersCharInPath, package.NumberOfSepicalCharInPath, 0 });
+            //rHandler.DisposeConnection();
+            //int newRow = UpdateData.UpdateDataFunc();
             return Json(new { isAttack = package.IsAttack, isDetectMode = web.IsDetecMode });
         }
     }

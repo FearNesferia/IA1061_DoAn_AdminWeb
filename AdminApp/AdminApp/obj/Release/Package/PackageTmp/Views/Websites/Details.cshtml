@@ -1,0 +1,34 @@
+﻿@model AdminApp.Models.Website
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Website</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Url)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Url)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsDetecMode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsDetecMode)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.WebsiteId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
