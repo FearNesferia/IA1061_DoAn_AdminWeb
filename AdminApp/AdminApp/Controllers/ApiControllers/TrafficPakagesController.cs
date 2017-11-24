@@ -57,10 +57,13 @@ namespace AdminApp.Controllers.ApiControllers
 
             int dbrow = this.context.TrafficPackages.Count(x => x.WebsiteId == web.WebsiteId);
             // Call R here
-            //AnalyzePacket rHandler = new AnalyzePacket();
-            //package.IsAttack = rHandler.GetAnalyzePacketResult(new int[] { package.LengthOfArguments, package.NumberOfArguments, package.NumberOfDigitsInArguments, package.NumberOfOtherCharInArguments, package.NumberOfDigitsInPath, package.NumberOfSpecialCharInArguments, package.LengthOfPath, package.LengthOfRequest, package.NumberOfLettersInArguments, package.NumberOfLettersCharInPath, package.NumberOfSepicalCharInPath, 0 });
-            //rHandler.DisposeConnection();
-            //int newRow = UpdateData.UpdateDataFunc();
+            AnalyzePacket rHandler = new AnalyzePacket();
+            package.IsAttack = rHandler.GetAnalyzePacketResult(new int[] { package.LengthOfArguments, package.NumberOfArguments, package.NumberOfDigitsInArguments, package.NumberOfOtherCharInArguments, package.NumberOfDigitsInPath, package.NumberOfSpecialCharInArguments, package.LengthOfPath, package.LengthOfRequest, package.NumberOfLettersInArguments, package.NumberOfLettersCharInPath, package.NumberOfSepicalCharInPath, 0 }, package.WebsiteId);
+            rHandler.DisposeConnection();
+            //int newRow = UpdateData.UpdateDataFunc(package.WebsiteId);
+            EventLog log = new EventLog();
+            log.Source = "Application";
+            log.WriteEntry($"result{package.IsAttack}");
             return Json(new { isAttack = package.IsAttack, isDetectMode = web.IsDetecMode });
         }
     }

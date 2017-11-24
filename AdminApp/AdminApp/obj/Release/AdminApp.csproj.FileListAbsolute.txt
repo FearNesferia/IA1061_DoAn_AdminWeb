@@ -190,7 +190,6 @@ G:\DA\4\IA1061_DoAn_AdminWeb\AdminApp\AdminApp\bin\System.Net.Http.Formatting.xm
 G:\DA\4\IA1061_DoAn_AdminWeb\AdminApp\AdminApp\bin\System.Web.Http.xml
 G:\DA\4\IA1061_DoAn_AdminWeb\AdminApp\AdminApp\bin\System.Web.Http.WebHost.xml
 G:\DA\4\IA1061_DoAn_AdminWeb\AdminApp\AdminApp\obj\Release\AdminApp.csprojResolveAssemblyReference.cache
-G:\DA\4\IA1061_DoAn_AdminWeb\AdminApp\AdminApp\obj\Release\AdminApp.Migrations.ririchiyov1.resources
 G:\DA\4\IA1061_DoAn_AdminWeb\AdminApp\AdminApp\obj\Release\AdminApp.csproj.GenerateResource.Cache
 G:\DA\4\IA1061_DoAn_AdminWeb\AdminApp\AdminApp\obj\Release\AdminApp.dll
 G:\DA\4\IA1061_DoAn_AdminWeb\AdminApp\AdminApp\obj\Release\AdminApp.pdb
@@ -199,3 +198,4 @@ G:\DA\4\IA1061_DoAn_AdminWeb\AdminApp\AdminApp\bin\RserveCLI2.xml
 E:\Work\DoAn\Projects\IA1061_AdminApp\IA1061_DoAn_AdminWeb\AdminApp\AdminApp\bin\RserveCLI2.dll
 E:\Work\DoAn\Projects\IA1061_AdminApp\IA1061_DoAn_AdminWeb\AdminApp\AdminApp\bin\RserveCLI2.xml
 E:\Work\DoAn\Projects\IA1061_AdminApp\IA1061_DoAn_AdminWeb\AdminApp\AdminApp\obj\Release\AdminApp.Migrations.miv1.resources
+G:\DA\4\IA1061_DoAn_AdminWeb\AdminApp\AdminApp\obj\Release\AdminApp.Migrations.miv1.resources

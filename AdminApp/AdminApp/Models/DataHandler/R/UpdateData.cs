@@ -10,12 +10,13 @@ namespace AdminApp.Models.DataHandler.R
 {
     public class UpdateData
     {
-        public static int UpdateDataFunc()
+        public static int UpdateDataFunc(int websiteId)
         {
             try
             {
                 RConnection connection = RConnection.Connect("fearnesferia.ddns.net", port: 6312);
-                Sexp result = connection.Eval("source('C:/Users/Administrator/Documents/RScript/ConnectSQL_SaveNewRtree.R')");
+                connection.Assign("id_to_check", Sexp.Make(websiteId));
+                Sexp result = connection.Eval("source('C:/Users/Administrator/Documents/RScript/AddOrUpdateRTree.R')");
                 connection.Dispose();
                 return (int)result[0];
             }
