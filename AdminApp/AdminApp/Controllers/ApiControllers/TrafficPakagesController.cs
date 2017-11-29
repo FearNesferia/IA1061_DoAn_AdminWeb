@@ -18,6 +18,7 @@ namespace AdminApp.Controllers.ApiControllers
     public class TrafficPakagesController : ApiController
     {
         private PakageDBContext context = new PakageDBContext();
+        private int id = -100000;
 
         [HttpGet]
         [Route("v1/api/TrafficPakages")]
@@ -44,21 +45,31 @@ namespace AdminApp.Controllers.ApiControllers
             {
                 return Json(new { isAttack = tp.IsAttack, isDetectMode = web.IsDetecMode });
             }
+            package.TrafficPackageId = id--;
+            EventLog log = new EventLog();
+            log.Source = "Application";
+            try
+            {
+                #region forDemoAndCollecting
+                //for demo
+                //if (request.Path.Contains("BlogCreate.aspx") && request.Payload.Contains("update"))
+                //{
+                //    package.IsAttack = true;
+                //}
 
+                //collecting package
+                package.IsAttack = true;
+                package.IsChecked = true;
+                //save change
+                this.context.SaveChanges();
+                #endregion
+            }
+            catch (Exception ex)
+            {
+                log.WriteEntry(ex.Message);
+            }
             this.context.TrafficPackages.Add(package);
-            #region forDemoAndCollecting
-            //for demo
-            //if (request.Path.Contains("BlogCreate.aspx") && request.Payload.Contains("update"))
-            //{
-            //    package.IsAttack = true;
-            //}
-
-            //collecting package
-            package.IsAttack = false;
-            package.IsChecked = true;
-            //save change
-            this.context.SaveChanges();
-            #endregion
+           
 
 
 

@@ -289,3 +289,7 @@ C:\DoAn\Projects\GitProject\IA1061_DoAn_AdminWeb\IA1061_DoAn_AdminWeb\AdminApp\A
 C:\DoAn\Projects\GitProject\IA1061_DoAn_AdminWeb\IA1061_DoAn_AdminWeb\AdminApp\AdminApp\bin\PagedList.Mvc.dll
 C:\DoAn\Projects\GitProject\IA1061_DoAn_AdminWeb\IA1061_DoAn_AdminWeb\AdminApp\AdminApp\bin\PagedList.xml
 C:\DoAn\Projects\GitProject\IA1061_DoAn_AdminWeb\IA1061_DoAn_AdminWeb\AdminApp\AdminApp\bin\PagedList.Mvc.xml
+E:\Work\DoAn\Projects\IA1061_AdminApp\IA1061_DoAn_AdminWeb\AdminApp\AdminApp\bin\PagedList.dll
+E:\Work\DoAn\Projects\IA1061_AdminApp\IA1061_DoAn_AdminWeb\AdminApp\AdminApp\bin\PagedList.Mvc.dll
+E:\Work\DoAn\Projects\IA1061_AdminApp\IA1061_DoAn_AdminWeb\AdminApp\AdminApp\bin\PagedList.xml
+E:\Work\DoAn\Projects\IA1061_AdminApp\IA1061_DoAn_AdminWeb\AdminApp\AdminApp\bin\PagedList.Mvc.xml
