@@ -46,21 +46,36 @@ namespace AdminApp.Controllers.ApiControllers
             }
 
             this.context.TrafficPackages.Add(package);
-            if (request.Path.Contains("BlogCreate.aspx") && request.Payload.Contains("update"))
-            {
-                package.IsAttack = true;
-            }
-            this.context.SaveChanges();
+            #region forDemoAndCollecting
             //for demo
-            
+            //if (request.Path.Contains("BlogCreate.aspx") && request.Payload.Contains("update"))
+            //{
+            //    package.IsAttack = true;
+            //}
+
+            //collecting package
+            package.IsAttack = false;
+            package.IsChecked = true;
+            //save change
+            this.context.SaveChanges();
+            #endregion
 
 
+
+            #region call_R
             int dbrow = this.context.TrafficPackages.Count(x => x.WebsiteId == web.WebsiteId);
             // Call R here
+
             //AnalyzePacket rHandler = new AnalyzePacket();
-            //package.IsAttack = rHandler.GetAnalyzePacketResult(new int[] { package.LengthOfArguments, package.NumberOfArguments, package.NumberOfDigitsInArguments, package.NumberOfOtherCharInArguments, package.NumberOfDigitsInPath, package.NumberOfSpecialCharInArguments, package.LengthOfPath, package.LengthOfRequest, package.NumberOfLettersInArguments, package.NumberOfLettersCharInPath, package.NumberOfSepicalCharInPath, 0 });
+            //package.IsAttack = rHandler.GetAnalyzePacketResult(new int[] { package.LengthOfArguments, package.NumberOfArguments, package.NumberOfDigitsInArguments, package.NumberOfOtherCharInArguments, package.NumberOfDigitsInPath, package.NumberOfSpecialCharInArguments, package.LengthOfPath, package.LengthOfRequest, package.NumberOfLettersInArguments, package.NumberOfLettersCharInPath, package.NumberOfSepicalCharInPath, 0 }, package.WebsiteId);
             //rHandler.DisposeConnection();
-            //int newRow = UpdateData.UpdateDataFunc();
+            //int newRow = UpdateData.UpdateDataFunc(package.WebsiteId);
+
+            //EventLog log = new EventLog();
+            //log.Source = "Application";
+            //log.WriteEntry($"result{package.IsAttack}");
+
+            #endregion
             return Json(new { isAttack = package.IsAttack, isDetectMode = web.IsDetecMode });
         }
     }

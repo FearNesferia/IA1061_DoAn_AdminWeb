@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using AdminApp.Models.DataHandler;
 using IISServerModules.Models;
+using PagedList;
 
 namespace AdminApp.Controllers.WebControllers
 {
@@ -16,10 +17,13 @@ namespace AdminApp.Controllers.WebControllers
         private PakageDBContext db = new PakageDBContext();
 
         // GET: TrafficPackages
-        public ActionResult Index()
+        public ActionResult Index(int? PageNumber, string WebsiteChoice)
         {
-            var trafficPackages = db.TrafficPackages.Include(t => t.Website);
-            return View(trafficPackages.ToList());
+            IQueryable<TrafficPackage> trafficPackages = db.TrafficPackages.Include(t => t.Website).OrderBy(x => x.WebsiteId);
+            IPagedList<TrafficPackage> list = trafficPackages.Where(x => WebsiteChoice == null || x.Website.Url == WebsiteChoice).ToPagedList((PageNumber ?? 1), 10);
+            ViewBag.PageCount = list.PageCount;
+            ViewBag.Websites = trafficPackages.Select(x => x.Website.Url).Distinct().ToList();
+            return View(list);
         }
 
         // GET: TrafficPackages/Details/5

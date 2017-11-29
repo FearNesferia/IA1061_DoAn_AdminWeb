@@ -24,13 +24,14 @@ namespace AdminApp.Models.DataHandler.R
             }
         }
 
-        public bool GetAnalyzePacketResult(int[] packetInfo)
+        public bool GetAnalyzePacketResult(int[] packetInfo, int websiteId)
         {
             //packetInfo example: int[] args_r = new int[] { 320, 13, 58, 0, 1, 48, 28, 0, 214, 23, 4 };
             //12 features: "LengthOfArguments","NumberOfArguments","NumberOfDigitsInArguments","NumberOfOtherCharInArguments","NumberOfDigitsInPath","NumberOfSpecialCharInArguments","LengthOfPath","LengthOfRequest","NumberOfLettersInArguments","NumberOfLettersCharInPath","NumberOfSepicalCharInPath",isattack
             if (connection != null && packetInfo.Length == 12)
             {
                 connection.Assign("packet", Sexp.Make(packetInfo));
+                connection.Assign("website_id", Sexp.Make(websiteId));
                 Sexp a = connection.Eval("source('C:/Users/Administrator/Documents/RScript/PredictPacket.R')");
                 return (int)a[0] == 0 ? false : true;
             }

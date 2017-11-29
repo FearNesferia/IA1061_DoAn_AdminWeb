@@ -1,4 +1,6 @@
-﻿@model IEnumerable<IISServerModules.Models.TrafficPackage>
+﻿@using PagedList
+@using PagedList.Mvc
+@model IPagedList<IISServerModules.Models.TrafficPackage>
 
 @{
     ViewBag.Title = "Index";
@@ -9,61 +11,94 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th class="col-md-1">
-            @Html.DisplayNameFor(model => model.Website.Url)
-        </th>
-        <th class="col-md-1">
-            @Html.DisplayNameFor(model => model.CreatedDate)
-        </th>
-        <th class="col-md-1">
-            @Html.DisplayNameFor(model => model.Path)
-        </th>
-        <th class="col-md-3">
-            @Html.DisplayNameFor(model => model.QueryString)
-        </th>
-        <th class="col-md-3">
-            @Html.DisplayNameFor(model => model.Payload)
-        </th>
-        <th class="col-md-1">
-            @Html.DisplayNameFor(model => model.IsChecked)
-        </th>
-        <th class="col-md-1">
-            @Html.DisplayNameFor(model => model.IsAttack)
-        </th>
-        <th class="col-md-1"></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Website.Url)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Path)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.QueryString)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Payload)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsChecked)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsAttack)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.TrafficPackageId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.TrafficPackageId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.TrafficPackageId })
-        </td>
-    </tr>
-}
+<div class="dropdown">
+    <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
+        All
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+        @foreach (var i in ViewBag.Websites)
+        {
+            <li role="presentation">
+                <span role="menuitem" tabindex="-1">
+                    @Html.ActionLink((string)i,"Index","TrafficPackages", new { WebsiteChoice = i }, null)
+                </span>
+            </li>
+        }
+    </ul>
+</div>
+<div>
+    <table id="traffic-table" class="display table table-bordered table-striped table-hover">
+        <tr>
+            <th class="col-md-1">
+                @Html.DisplayNameFor(model => model.First().Website.Url)
+            </th>
+            <th class="col-md-1">
+                @Html.DisplayNameFor(model => model.First().CreatedDate)
+            </th>
+            <th class="col-md-1">
+                @Html.DisplayNameFor(model => model.First().Path)
+            </th>
+            <th class="col-md-3">
+                @Html.DisplayNameFor(model => model.First().QueryString)
+            </th>
+            <th class="col-md-3">
+                @Html.DisplayNameFor(model => model.First().Payload)
+            </th>
+            <th class="col-md-1">
+                @Html.DisplayNameFor(model => model.First().IsChecked)
+            </th>
+            <th class="col-md-1">
+                @Html.DisplayNameFor(model => model.First().IsAttack)
+            </th>
+            <th class="col-md-1"></th>
+        </tr>
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Website.Url)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Path)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.QueryString)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Payload)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsChecked)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsAttack)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.TrafficPackageId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.TrafficPackageId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.TrafficPackageId })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+<div style="text-align: center">
+    @Html.PagedListPager(Model, page => Url.Action("Index", "TrafficPackages", new { PageNumber = page, WebsiteChoice = Request.QueryString["WebsiteChoice"] }), new PagedListRenderOptions()
+{
+    LinkToFirstPageFormat = "First",
+    LinkToPreviousPageFormat = "Previous",
+    LinkToNextPageFormat = "Next",
+    LinkToLastPageFormat = "Last",
+    DisplayLinkToFirstPage = PagedListDisplayMode.Always,
+    DisplayLinkToLastPage = PagedListDisplayMode.Always,
+    DisplayLinkToNextPage = PagedListDisplayMode.Always,
+    DisplayLinkToPreviousPage = PagedListDisplayMode.Always
+})
+</div>

@@ -1,40 +1,216 @@
 ﻿<!DOCTYPE html>
-<html>
+<!--[if lt IE 7]>  <html class="lt-ie7 rtl"> <![endif]-->
+<!--[if IE 7]>     <html class="lt-ie8 rtl"> <![endif]-->
+<!--[if IE 8]>     <html class="lt-ie9 rtl"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="rtl">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Con - Admin Dashboard with Material Design</title>
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
+
+    <link rel="icon" type="image/png" href="~/assets/_con/images/icon.png">
+    <!-- build:css assets/css/style.css -->
+    <!-- nanoScroller -->
+    <link rel="stylesheet" type="text/css" href="~/assets/nanoScroller/nanoscroller.css" />
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" type="text/css" href="~/assets/font-awesome/css/font-awesome.min.css" />
+
+    <!-- Material Design Icons -->
+    <link rel="stylesheet" type="text/css" href="~/assets/material-design-icons/css/material-design-icons.min.css" />
+
+    <!-- IonIcons -->
+    <link rel="stylesheet" type="text/css" href="~/assets/ionicons/css/ionicons.min.css" />
+
+    <!-- Google Prettify -->
+    <link rel="stylesheet" type="text/css" href="~/assets/google-code-prettify/prettify.css" />
+
+    <!-- Main -->
+    <link rel="stylesheet" type="text/css" href="~/assets/_con/css/_con.min.css" />
+    <!-- endbuild -->
+    <!--[if lt IE 9]>
+      <script src="assets/html5shiv/html5shiv.min.js"></script>
+    <![endif]-->
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                </ul>
+    <!--
+      Top Navbar
+        Options:
+          .navbar-dark - dark color scheme
+          .navbar-static - static navbar
+          .navbar-under - under sidebar
+    -->
+    <nav class="navbar-top">
+        <div class="nav-wrapper">
+
+            <!-- Sidebar toggle -->
+            <a href="#" class="yay-toggle">
+                <div class="burg1"></div>
+                <div class="burg2"></div>
+                <div class="burg3"></div>
+            </a>
+            <!-- Sidebar toggle -->
+            <!-- Logo -->
+            <a href="#!" class="brand-logo">
+                <img src="/assets/_con/images/logo.png" alt="Con">
+            </a>
+            <!-- /Logo -->
+            <!-- Menu -->
+            <ul>
+                <li>
+                    <a href="#!" class="search-bar-toggle"><i class="mdi-action-search"></i></a>
+                </li>
+                <li class="user">
+                    <a class="dropdown-button" href="#!" data-activates="user-dropdown">
+                        <img src="~/assets/_con/images/user.jpg" alt="John Doe" class="circle">John Doe<i class="mdi-navigation-expand-more right"></i>
+                    </a>
+
+                    <ul id="user-dropdown" class="dropdown-content">
+                        <li>
+                            <a href="page-profile.html"><i class="fa fa-user"></i> Profile</a>
+                        </li>
+                        <li>
+                            <a href="mail-inbox.html"><i class="fa fa-envelope"></i> Messages <span class="badge new">2</span></a>
+                        </li>
+                        <li>
+                            <a href="#!"><i class="fa fa-cogs"></i> Settings</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="page-sign-in.html"><i class="fa fa-sign-out"></i> Logout</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- /Menu -->
+
+        </div>
+    </nav>
+    <!-- /Top Navbar -->
+    <!--
+    Yay Sidebar
+    Options [you can use all of theme classnames]:
+      .yay-hide-to-small         - no hide menu, just set it small with big icons
+      .yay-static                - stop using fixed sidebar (will scroll with content)
+      .yay-gestures              - to show and hide menu using gesture swipes
+      .yay-light                 - light color scheme
+      .yay-hide-on-content-click - hide menu on content click
+
+    Effects [you can use one of these classnames]:
+      .yay-overlay  - overlay content
+      .yay-push     - push content to right
+      .yay-shrink   - shrink content width
+    -->
+    <aside class="yaybar yay-shrink yay-hide-to-small yay-gestures">
+
+        <div class="top">
+            <div>
+                <!-- Sidebar toggle -->
+                <a href="#" class="yay-toggle">
+                    <div class="burg1"></div>
+                    <div class="burg2"></div>
+                    <div class="burg3"></div>
+                </a>
+                <!-- Sidebar toggle -->
+                <!-- Logo -->
+                <a href="#!" class="brand-logo">
+                    <img src="~/assets/_con/images/logo-white.png" alt="Con">
+                </a>
+                <!-- /Logo -->
             </div>
         </div>
-    </div>
 
-    <div class="container body-content">
+
+        <div class="nano">
+            <div class="nano-content">
+                <ul>
+                    <li>
+                        <a class="waves-effect waves-blue" href="/Home/Index"><i class="fa fa-dashboard"></i> Dashboard</a>
+                    </li>
+                    <li>
+                        <a class="yay-sub-toggle waves-effect waves-blue"><i class="fa fa-table"></i> Data<span class="yay-collapse-icon mdi-navigation-expand-more"></span></a>
+                        <ul>
+                            <li>
+                                <a class="waves-effect waves-blue" href="/TrafficPackages/Index">Traffic Packages</a>
+                            </li>
+                            <li>
+                                <a class="waves-effect waves-blue" href="#">Websites</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="waves-effect waves-blue" href="#"><i class="fa fa-bar-chart"></i> Data mining</a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </aside>
+    <!-- /Yay Sidebar -->
+    <!-- Main Content -->
+    <section class="content-wrap">
+
+        <!-- Breadcrumb -->
+        <div class="page-title">
+            <div class="row">
+                <div class="col s12 m9 l10">
+                    <h1>Blank</h1>
+
+                    <ul>
+                        <li>
+                            <a href="#"><i class="fa fa-home"></i> Home</a>  <i class="fa fa-angle-right"></i>
+                        </li>
+
+                        <li>
+                            <a href='dashboard.html'>Dashboard</a>  <i class='fa fa-angle-right'></i>
+                        </li>
+                        <li>
+                            <a href='#'>Pages</a>  <i class='fa fa-angle-right'></i>
+                        </li>
+                        <li>
+                            <a href='page-blank.html'>Blank</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col s12 m3 l2 right-align">
+                    <a href="#!" class="btn grey lighten-3 grey-text z-depth-0 chat-toggle"><i class="fa fa-comments"></i></a>
+                </div>
+            </div>
+        </div>
+        <!-- /Breadcrumb -->
+        <!-- Page Content-->
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
+        <!-- /Page Content-->
 
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
+    </section>
+
+    <!-- jQuery -->
+    <script type="text/javascript" src="~/assets/jquery/jquery.min.js"></script>
+
+    <!-- jQuery RAF (improved animation performance) -->
+    <script type="text/javascript" src="~/assets/jqueryRAF/jquery.requestAnimationFrame.min.js"></script>
+
+    <!-- nanoScroller -->
+    <script type="text/javascript" src="~/assets/nanoScroller/jquery.nanoscroller.min.js"></script>
+
+    <!-- Materialize -->
+    <script type="text/javascript" src="~/assets/materialize/js/materialize.min.js"></script>
+
+    <!-- Sortable -->
+    <script type="text/javascript" src="~/assets/sortable/Sortable.min.js"></script>
+
+    <!-- Main -->
+    <script type="text/javascript" src="~/assets/_con/js/_con.min.js"></script>
+
+    <!-- Google Prettify -->
+    <script type="text/javascript" src="~/assets/google-code-prettify/prettify.js"></script>
+
+    @RenderSection("scripts", required: false)
 </body>
 </html>
