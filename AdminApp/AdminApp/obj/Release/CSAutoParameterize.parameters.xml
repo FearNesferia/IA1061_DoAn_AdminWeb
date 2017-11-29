@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
   <parameter name="AdminApp.Models.DataHandler.PakageDBContext-Web.config Connection String" description="AdminApp.Models.DataHandler.PakageDBContext Connection String used in web.config by the application to access the database." defaultValue="Server=fearnesferia.ddns.net;Database=PACKAGEDB;User id=sa;Password=Zaq@12345; MultipleActiveResultSets=true" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="G:\\DA\\4\\IA1061_DoAn_AdminWeb\\AdminApp\\AdminApp\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='AdminApp.Models.DataHandler.PakageDBContext']/@connectionString" />
+    <parameterEntry kind="XmlFile" scope="C:\\DoAn\\Projects\\GitProject\\IA1061_DoAn_AdminWeb\\IA1061_DoAn_AdminWeb\\AdminApp\\AdminApp\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='AdminApp.Models.DataHandler.PakageDBContext']/@connectionString" />
   </parameter>
 </parameters>

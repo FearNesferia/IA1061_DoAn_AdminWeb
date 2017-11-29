@@ -31,7 +31,7 @@ namespace AdminApp.Models.DataHandler.R
             if (connection != null && packetInfo.Length == 12)
             {
                 connection.Assign("packet", Sexp.Make(packetInfo));
-                connection.Assign("websiteId", Sexp.Make(websiteId));
+                connection.Assign("website_id", Sexp.Make(websiteId));
                 Sexp a = connection.Eval("source('C:/Users/Administrator/Documents/RScript/PredictPacket.R')");
                 return (int)a[0] == 0 ? false : true;
             }
