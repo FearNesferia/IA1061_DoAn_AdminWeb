@@ -1,13 +1,13 @@
 ﻿<!DOCTYPE html>
-<!--[if lt IE 7]>  <html class="lt-ie7 rtl"> <![endif]-->
-<!--[if IE 7]>     <html class="lt-ie8 rtl"> <![endif]-->
-<!--[if IE 8]>     <html class="lt-ie9 rtl"> <![endif]-->
+<!--[if lt IE 7]>  <html class="lt-ie7"> <![endif]-->
+<!--[if IE 7]>     <html class="lt-ie8"> <![endif]-->
+<!--[if IE 8]>     <html class="lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->
-<html class="rtl">
+<html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Con - Admin Dashboard with Material Design</title>
+    <title>G3 IA 1061 Admin Web</title>
 
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -37,15 +37,10 @@
     <!--[if lt IE 9]>
       <script src="assets/html5shiv/html5shiv.min.js"></script>
     <![endif]-->
+    @RenderSection("styles", required: false)
 </head>
 <body>
-    <!--
-      Top Navbar
-        Options:
-          .navbar-dark - dark color scheme
-          .navbar-static - static navbar
-          .navbar-under - under sidebar
-    -->
+    <!-- Top Navbar -->
     <nav class="navbar-top">
         <div class="nav-wrapper">
 
@@ -63,12 +58,9 @@
             <!-- /Logo -->
             <!-- Menu -->
             <ul>
-                <li>
-                    <a href="#!" class="search-bar-toggle"><i class="mdi-action-search"></i></a>
-                </li>
                 <li class="user">
                     <a class="dropdown-button" href="#!" data-activates="user-dropdown">
-                        <img src="~/assets/_con/images/user.jpg" alt="John Doe" class="circle">John Doe<i class="mdi-navigation-expand-more right"></i>
+                        <img src="~/assets/_con/images/user.jpg" alt="Administrator" class="circle">Administrator<i class="mdi-navigation-expand-more right"></i>
                     </a>
 
                     <ul id="user-dropdown" class="dropdown-content">
@@ -89,24 +81,9 @@
                 </li>
             </ul>
             <!-- /Menu -->
-
         </div>
     </nav>
     <!-- /Top Navbar -->
-    <!--
-    Yay Sidebar
-    Options [you can use all of theme classnames]:
-      .yay-hide-to-small         - no hide menu, just set it small with big icons
-      .yay-static                - stop using fixed sidebar (will scroll with content)
-      .yay-gestures              - to show and hide menu using gesture swipes
-      .yay-light                 - light color scheme
-      .yay-hide-on-content-click - hide menu on content click
-
-    Effects [you can use one of these classnames]:
-      .yay-overlay  - overlay content
-      .yay-push     - push content to right
-      .yay-shrink   - shrink content width
-    -->
     <aside class="yaybar yay-shrink yay-hide-to-small yay-gestures">
 
         <div class="top">
@@ -140,7 +117,7 @@
                                 <a class="waves-effect waves-blue" href="/TrafficPackages/Index">Traffic Packages</a>
                             </li>
                             <li>
-                                <a class="waves-effect waves-blue" href="#">Websites</a>
+                                <a class="waves-effect waves-blue" href="/Websites/Index">Websites</a>
                             </li>
                         </ul>
                     </li>
@@ -155,41 +132,14 @@
     <!-- /Yay Sidebar -->
     <!-- Main Content -->
     <section class="content-wrap">
-
-        <!-- Breadcrumb -->
-        <div class="page-title">
-            <div class="row">
-                <div class="col s12 m9 l10">
-                    <h1>Blank</h1>
-
-                    <ul>
-                        <li>
-                            <a href="#"><i class="fa fa-home"></i> Home</a>  <i class="fa fa-angle-right"></i>
-                        </li>
-
-                        <li>
-                            <a href='dashboard.html'>Dashboard</a>  <i class='fa fa-angle-right'></i>
-                        </li>
-                        <li>
-                            <a href='#'>Pages</a>  <i class='fa fa-angle-right'></i>
-                        </li>
-                        <li>
-                            <a href='page-blank.html'>Blank</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col s12 m3 l2 right-align">
-                    <a href="#!" class="btn grey lighten-3 grey-text z-depth-0 chat-toggle"><i class="fa fa-comments"></i></a>
-                </div>
-            </div>
-        </div>
-        <!-- /Breadcrumb -->
         <!-- Page Content-->
         @RenderBody()
         <!-- /Page Content-->
-
     </section>
-
+    <!-- /Main Content -->
+    <footer>
+        &copy; 2017 <strong>G3</strong> - IA1061.
+    </footer>
     <!-- jQuery -->
     <script type="text/javascript" src="~/assets/jquery/jquery.min.js"></script>
 

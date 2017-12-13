@@ -1,0 +1,84 @@
+﻿
+@{          IEnumerable<IISServerModules.Models.TrafficPackage> __inheritsHelper = null;
+}
+
+<h2>Index</h2>
+
+<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<script src="~/assets/jquery/jquery.min.js"></script>
+<script>
+    var $dataPoints = new Array();
+    var maxX, maxY;
+    var list;
+    $(document).ready(function () {
+                $.ajax({
+            contentType: "application/json; charset=UTF8",
+            datatype: "json",
+            type:"GET",
+            url: '@Url.Action("GetList" , "TrafficPackages")',
+            success: function (response) {
+                list = response.list;
+
+                },
+                error: function (response) {
+                    alert('error');
+                }
+        });
+                for (var i = 0; i < 10; i++) {
+                    $dataPoints.push({ x: list[i].x, y: list[i].y });
+                    $dataPoints.push({ x: 100 + i, y: 100 + i });
+                }
+        $dataPoints.push({ x: 800, y: 350 })
+
+            var chart = new CanvasJS.Chart("chartContainer", {
+            animationEnabled: true,
+            zoomEnabled: true,
+            title: {
+                text: "Real Estate Rates"
+            },
+            axisX: {
+                title: "Area (in sq. ft)",
+                minimum: 0,
+                maximum: 1000,
+            },
+            axisY: {
+                title: "Price (in USD)",
+                minimum: 0,
+                maximum: 1000,
+            },
+            data: [{
+                type: "scatter",
+                toolTipContent: "<b>Area: </b>{x} sq.ft<br/><b>Price: </b>${y}k",
+                dataPoints: $dataPoints,
+                //dataPoints: [
+                //    { x: 800, y: 350 },
+                //    { x: 900, y: 450 },
+                //    { x: 850, y: 450 },
+                //    { x: 1250, y: 700 },
+                //    { x: 1100, y: 650 },
+                //    { x: 1350, y: 850 },
+                //    { x: 1200, y: 900 },
+                //    { x: 1410, y: 1250 },
+                //    { x: 1250, y: 1100 },
+                //    { x: 1400, y: 1150 },
+                //    { x: 1500, y: 1050 },
+                //    { x: 1330, y: 1120 },
+                //    { x: 1580, y: 1220 },
+                //    { x: 1620, y: 1400 },
+                //    { x: 1250, y: 1450 },
+                //    { x: 1350, y: 1600 },
+                //    { x: 1650, y: 1300 },
+                //    { x: 1700, y: 1620 },
+                //    { x: 1750, y: 1700 },
+                //    { x: 1830, y: 1800 },
+                //    { x: 1900, y: 2000 },
+                //    { x: 2050, y: 2200 },
+                //    { x: 2150, y: 1960 },
+                //    { x: 2250, y: 1990 }
+                //]
+            }]
+        });
+        chart.render();
+    })
+</script>

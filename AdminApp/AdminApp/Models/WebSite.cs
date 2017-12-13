@@ -17,13 +17,14 @@ namespace AdminApp.Models
         [Required]
         public string Url { get; set; }
 
-
         [Required]
+        [Display(Name = "Is Detected Mode")]
         public bool IsDetecMode { get; set; }
 
-
+        [Display(Name ="Checked Packages")]
+        public int NumberOfPackageInTree { get; set; } = 0;
 
         //relationship
-        public IList<TrafficPackage> TrafficPackages{ get; set; }
+        public IList<TrafficPackage> TrafficPackages { get; set; }
     }
 }

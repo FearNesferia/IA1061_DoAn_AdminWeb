@@ -18,7 +18,14 @@ namespace AdminApp.Controllers.WebControllers
         // GET: Websites
         public ActionResult Index()
         {
-            return View(db.Websites.ToList());
+            List<Website> list = db.Websites.ToList();
+            Dictionary<int, int> packagesCount = new Dictionary<int, int>();
+            foreach (Website item in list)
+            {
+                packagesCount.Add(item.WebsiteId, db.TrafficPackages.Where(x => x.WebsiteId == item.WebsiteId).Count());
+            }
+            ViewBag.PackagesOfWebsite = packagesCount;
+            return View(list);
         }
 
         // GET: Websites/Details/5
@@ -114,6 +121,15 @@ namespace AdminApp.Controllers.WebControllers
             db.Websites.Remove(website);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+
+        [HttpPost]
+        public ActionResult ChangeMode(int websiteId, bool isDetectMode)
+        {
+            this.db.Websites.FirstOrDefault(x => x.WebsiteId == websiteId).IsDetecMode = isDetectMode;
+            db.SaveChanges();
+            return Json(new { success = true }, JsonRequestBehavior.AllowGet);
         }
 
         protected override void Dispose(bool disposing)

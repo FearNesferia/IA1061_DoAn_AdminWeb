@@ -3,102 +3,129 @@
 @model IPagedList<IISServerModules.Models.TrafficPackage>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Traffic Package Index";
 }
 
-<h2>Index</h2>
+<!-- Breadcrumb -->
+<div class="ecommerce-title">
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+    <div class="row">
+        <div class="col s12 m9 l10">
+            <!--h1>@@title</h1-->
+            <nav>
+                <ul class="left">
+                    <li class="active">
+                        <a href="/TrafficPackages/Index">Traffic Packages</a>
+                    </li>
+                    <li>
+                        <a href="/Websites/Index">Websites</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
 
-<div class="dropdown">
-    <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
-        All
-        <span class="caret"></span>
-    </button>
-    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-        @foreach (var i in ViewBag.Websites)
-        {
-            <li role="presentation">
-                <span role="menuitem" tabindex="-1">
-                    @Html.ActionLink((string)i,"Index","TrafficPackages", new { WebsiteChoice = i }, null)
-                </span>
-            </li>
-        }
-    </ul>
 </div>
-<div>
-    <table id="traffic-table" class="display table table-bordered table-striped table-hover">
-        <tr>
-            <th class="col-md-1">
-                @Html.DisplayNameFor(model => model.First().Website.Url)
-            </th>
-            <th class="col-md-1">
-                @Html.DisplayNameFor(model => model.First().CreatedDate)
-            </th>
-            <th class="col-md-1">
-                @Html.DisplayNameFor(model => model.First().Path)
-            </th>
-            <th class="col-md-3">
-                @Html.DisplayNameFor(model => model.First().QueryString)
-            </th>
-            <th class="col-md-3">
-                @Html.DisplayNameFor(model => model.First().Payload)
-            </th>
-            <th class="col-md-1">
-                @Html.DisplayNameFor(model => model.First().IsChecked)
-            </th>
-            <th class="col-md-1">
-                @Html.DisplayNameFor(model => model.First().IsAttack)
-            </th>
-            <th class="col-md-1"></th>
-        </tr>
+<!-- /Breadcrumb -->
 
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Website.Url)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CreatedDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Path)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.QueryString)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Payload)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IsChecked)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IsAttack)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.TrafficPackageId }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.TrafficPackageId }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.TrafficPackageId })
-                </td>
-            </tr>
-        }
+<!-- Packages -->
+<div class="card">
+    <div class="title">
+        <h5>Traffic Packages</h5>
+        <div class="btn-group right">
+            <a href="/TrafficPackages/Create" class="btn btn-small z-depth-0"><i class="mdi mdi-content-add"></i></a>
+            <a href=@(Model.Count == 0 ? "#" : ("/TrafficPackages/Edit/" + Model.First().TrafficPackageId)) class="btn btn-small z-depth-0"><i class="mdi mdi-editor-mode-edit"></i></a>
+            <a href="#" class="btn btn-small red lighten-1 z-depth-0"><i class="mdi mdi-action-delete"></i></a>
+        </div>
+    </div>
+    <div class="content">
+        <div class="row">
+            <div class="col s6">
+                <div class="input-field">
+                    <select onchange="window.location.href = this.value;">
+                        <option value="/TrafficPackages/Index">All Websites</option>
+                        @if (ViewBag.Websites.Count > 1)
+            {
+                foreach (var item in ViewBag.Websites)
+                {
+                                <option @((Request.QueryString["WebsiteChoice"].AsInt() == item.WebsiteId) ? "selected" : "") value="@("/TrafficPackages/Index?WebsiteChoice=" + item.WebsiteId)">@item.Url</option>
+                            }
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="col s6">
+                <div class="input-field">
+                    <input id="inputSearch" type="text">
+                    <label for="inputSearch">Input Search</label>
+                </div>
+            </div>
+        </div>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Select</th>
+                    <th>@Html.ActionLink(@Html.DisplayNameFor(model => model.First().Website.Url).ToString(), "Index", "TrafficPackages", new { SortField = ViewBag.SortByUrl, Search = Request.QueryString["Search"], WebsiteChoice = Request.QueryString["WebsiteChoice"] }, new {style = "color:rgba(0,0,0,.65)" })</th>
+                    <th>@Html.ActionLink(@Html.DisplayNameFor(model => model.First().CreatedDate).ToString(), "Index", "TrafficPackages", new { SortField = ViewBag.SortByCreatedDate, Search = Request.QueryString["Search"], WebsiteChoice = Request.QueryString["WebsiteChoice"] }, new { style = "color:rgba(0,0,0,.65)" })</th>
+                    <th>@Html.ActionLink(@Html.DisplayNameFor(model => model.First().Path).ToString(), "Index", "TrafficPackages", new { SortField = ViewBag.SortByPath, Search = Request.QueryString["Search"], WebsiteChoice = Request.QueryString["WebsiteChoice"] }, new { style = "color:rgba(0,0,0,.65)" })</th>
+                    <th>@Html.ActionLink(@Html.DisplayNameFor(model => model.First().QueryString).ToString(), "Index", "TrafficPackages", new { SortField = ViewBag.SortByQueryString, Search = Request.QueryString["Search"], WebsiteChoice = Request.QueryString["WebsiteChoice"] }, new { style = "color:rgba(0,0,0,.65)" })</th>
+                    <th>@Html.ActionLink(@Html.DisplayNameFor(model => model.First().Payload).ToString(), "Index", "TrafficPackages", new { SortField = ViewBag.SortByPayLoad, Search = Request.QueryString["Search"], WebsiteChoice = Request.QueryString["WebsiteChoice"] }, new { style = "color:rgba(0,0,0,.65)" })</th>
+                    <th>@Html.ActionLink(@Html.DisplayNameFor(model => model.First().IsAttack).ToString(), "Index", "TrafficPackages", new { SortField = ViewBag.SortByIsAttack, Search = Request.QueryString["Search"], WebsiteChoice = Request.QueryString["WebsiteChoice"] }, new { style = "color:rgba(0,0,0,.65)" })</th>
+                    <th>@Html.ActionLink(@Html.DisplayNameFor(model => model.First().IsChecked).ToString(), "Index", "TrafficPackages", new { SortField = ViewBag.SortByIsChecked, Search = Request.QueryString["Search"], WebsiteChoice = Request.QueryString["WebsiteChoice"] }, new { style = "color:rgba(0,0,0,.65)" })</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <th>
+                            <input type="checkbox" id="@item.TrafficPackageId" />
+                            <label for="@item.TrafficPackageId"></label>
+                        </th>
+                        <td>
+                            <a href=@("/TrafficPackages/Details/" + item.TrafficPackageId)>
+                                <strong class="grey-text text-darken-2">@Html.DisplayFor(modelItem => item.Website.Url)</strong>
+                            </a>
+                        </td>
+                        <td>@Html.DisplayFor(modelItem => item.CreatedDate)</td>
+                        <td>@item.Path.Substring(item.Path.Contains('/') ? item.Path.IndexOf('/') : item.Path.Length)</td>
+                        <td>@(string.IsNullOrEmpty(item.QueryString) ? "" : (item.QueryString.Substring(0, item.QueryString.Length < 25 ? item.QueryString.Length : 25)))</td>
+                        <td>@(string.IsNullOrEmpty(item.Payload) ? "" : item.Payload.Substring(0, item.Payload.Length < 25 ? item.Payload.Length : 25))</td>
+                        <td><i class="container center-align @(item.IsAttack ? "fa fa-check-square" : "fa fa-square-o")"></i></td>
+                        <td><i class="container center-align @(item.IsChecked ? "fa fa-check-square" : "fa fa-square-o")"></i></td>
+                        <td>
+                            <a href="@("/TrafficPackages/Edit/" + item.TrafficPackageId)" class="btn btn-small z-depth-0"><i class="mdi mdi-editor-mode-edit"></i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div class="align-center">
+            @Html.PagedListPager(Model, page => Url.Action("Index", "TrafficPackages", new { PageNumber = page, WebsiteChoice = Request.QueryString["WebsiteChoice"], SortField = Request.QueryString["SortField"] }), new PagedListRenderOptions()
+       {
+           LinkToFirstPageFormat = "First",
+           LinkToPreviousPageFormat = "Previous",
+           LinkToNextPageFormat = "Next",
+           LinkToLastPageFormat = "Last",
+           DisplayLinkToFirstPage = PagedListDisplayMode.Always,
+           DisplayLinkToLastPage = PagedListDisplayMode.Always,
+           DisplayLinkToNextPage = PagedListDisplayMode.Always,
+           DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+           MaximumPageNumbersToDisplay = 5
+       })
+        </div>
 
-    </table>
+    </div>
 </div>
-<div style="text-align: center">
-    @Html.PagedListPager(Model, page => Url.Action("Index", "TrafficPackages", new { PageNumber = page, WebsiteChoice = Request.QueryString["WebsiteChoice"] }), new PagedListRenderOptions()
-{
-    LinkToFirstPageFormat = "First",
-    LinkToPreviousPageFormat = "Previous",
-    LinkToNextPageFormat = "Next",
-    LinkToLastPageFormat = "Last",
-    DisplayLinkToFirstPage = PagedListDisplayMode.Always,
-    DisplayLinkToLastPage = PagedListDisplayMode.Always,
-    DisplayLinkToNextPage = PagedListDisplayMode.Always,
-    DisplayLinkToPreviousPage = PagedListDisplayMode.Always
-})
-</div>
+<!-- /Packages -->
+@section scripts{
+    <script type="text/javascript">
+        $('#inputSearch').keypress(function (e) {
+            if (e.keyCode == 13) {
+                var urlParam = new URLSearchParams(window.location.search);
+                window.location.href = '/trafficpackages/index?WebsiteChoice=' + (urlParam.get('WebsiteChoice') || '') + '&Search=' + $('#inputSearch').val();
+            }
+        });
+    </script>
+}

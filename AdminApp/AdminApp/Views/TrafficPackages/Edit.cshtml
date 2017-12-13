@@ -1,177 +1,135 @@
-﻿@model IISServerModules.Models.TrafficPackage
+﻿@model AdminApp.Models.TrafficPackageEditModel
 
 @{
     ViewBag.Title = "Edit";
 }
+<!-- Breadcrumb -->
+<div class="ecommerce-title">
 
-<h2>Edit</h2>
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>TrafficPackage</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.TrafficPackageId)
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.CreatedDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CreatedDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CreatedDate, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Path, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Path, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Path, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.QueryString, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.QueryString, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.QueryString, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Payload, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Payload, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Payload, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.IsChecked, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.IsChecked)
-                    @Html.ValidationMessageFor(model => model.IsChecked, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.IsAttack, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.IsAttack)
-                    @Html.ValidationMessageFor(model => model.IsAttack, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.LengthOfArguments, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.LengthOfArguments, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.LengthOfArguments, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.NumberOfArguments, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.NumberOfArguments, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.NumberOfArguments, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.NumberOfDigitsInArguments, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.NumberOfDigitsInArguments, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.NumberOfDigitsInArguments, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.NumberOfOtherCharInArguments, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.NumberOfOtherCharInArguments, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.NumberOfOtherCharInArguments, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.NumberOfDigitsInPath, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.NumberOfDigitsInPath, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.NumberOfDigitsInPath, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.NumberOfSpecialCharInArguments, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.NumberOfSpecialCharInArguments, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.NumberOfSpecialCharInArguments, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.LengthOfPath, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.LengthOfPath, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.LengthOfPath, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.LengthOfRequest, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.LengthOfRequest, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.LengthOfRequest, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.NumberOfLettersInArguments, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.NumberOfLettersInArguments, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.NumberOfLettersInArguments, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.NumberOfLettersCharInPath, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.NumberOfLettersCharInPath, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.NumberOfLettersCharInPath, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.NumberOfSepicalCharInPath, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.NumberOfSepicalCharInPath, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.NumberOfSepicalCharInPath, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.WebsiteId, "WebsiteId", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("WebsiteId", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.WebsiteId, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
+    <div class="row">
+        <div class="col s12 m9 l10">
+            <!--h1>@@title</h1-->
+            <nav>
+                <ul class="left">
+                    <li class="active">
+                        <a href="/TrafficPackages/Index">Traffic Packages</a>
+                    </li>
+                    <li>
+                        <a href="/Websites/Index">Websites</a>
+                    </li>
+                </ul>
+            </nav>
         </div>
     </div>
+
+</div>
+<!-- /Breadcrumb -->
+@using (Html.BeginForm("Edit", "TrafficPackages", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.TrafficPackageId)
+    <!-- General -->
+    <div class="card">
+        <div class="title">
+            <h5>Edit Traffic Package</h5>
+            <a class="minimize" href="#">
+                <i class="mdi-navigation-expand-less"></i>
+            </a>
+        </div>
+        <div class="content">
+            <!-- Main Info -->
+            <div class="card">
+                <div class="title">
+                    <h5>Main Info</h5>
+                    <a class="minimize" href="#">
+                        <i class="mdi-navigation-expand-less"></i>
+                    </a>
+                </div>
+                <div class="content">
+
+                    <div class="row no-margin-top">
+                        <div class="col s12 l3">
+                            @Html.LabelFor(model => model.WebsiteUrl, new { @class = "setting-title" })
+                        </div>
+                        <div class="col s12 l9">
+                            <div class="input-field no-margin-top disabled">
+                                @Html.DisplayFor(model => model.WebsiteUrl)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row no-margin-top">
+                        <div class="col s12 l3">
+                            @Html.LabelFor(model => model.Path, new { @class = "setting-title" })
+                        </div>
+                        <div class="col s12 l9">
+                            <div class="input-field no-margin-top">
+                                @Html.DisplayFor(model => model.Path, new { @style = "min-height: 100px" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row no-margin-top">
+                        <div class="col s12 l3">
+                            @Html.LabelFor(model => model.QueryString, new { @class = "setting-title" })
+                        </div>
+                        <div class="col s12 l9">
+                            <div class="input-field no-margin-top">
+                                @Html.DisplayFor(model => model.QueryString, new { @style = "min-height: 100px" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row no-margin-top">
+                        <div class="col s12 l3">
+                            @Html.LabelFor(model => model.Payload, new { @class = "setting-title" })
+                        </div>
+                        <div class="col s12 l9">
+                            <div class="input-field no-margin-top">
+                                @Html.TextAreaFor(model => model.Payload, new { @style = "min-height: 100px" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /Main Info -->
+            <!-- Detail Info -->
+            <div class="card">
+                <div class="title">
+                    <h5>Detail Info</h5>
+                    <a class="minimize" href="#">
+                        <i class="mdi-navigation-expand-less"></i>
+                    </a>
+                </div>
+                <div class="content">
+                    <div class="row no-margin-top" style="min-height:50px">
+                        <div class="col s12 l3">
+                            @Html.LabelFor(model => model.IsAttack, new { @class = "setting-title" })
+                        </div>
+                        <div class="col s12 l9">
+                            <div class="input-field no-margin-top">
+                                @Html.EditorFor(model => model.IsAttack, new { htmlAttributes = new { style = "opacity:1;visibility: visible" } })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row no-margin-top">
+                        <div class="col s12 l3">
+                            @Html.LabelFor(model => model.IsChecked, new { @class = "setting-title" })
+                        </div>
+                        <div class="col s12 l9">
+                            <div class="input-field no-margin-top">
+                                @Html.EditorFor(model => model.IsChecked, new { htmlAttributes = new { style = "opacity:1;visibility: visible" } })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /Detail Info -->
+        </div>
+    </div>
+    <!-- /General -->
+          <!-- Save and Cancel buttons -->
+    <p class="right-align">
+        <button class="btn" type="submit">Save</button>
+        <a class="btn" href="/TrafficPackages/Index">Cancel</a>
+    </p>
+      <!-- /Save and Cancel buttons -->
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>

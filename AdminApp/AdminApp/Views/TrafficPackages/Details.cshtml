@@ -3,160 +3,269 @@
 @{
     ViewBag.Title = "Details";
 }
+<!-- Breadcrumb -->
+<div class="ecommerce-title">
 
-<h2>Details</h2>
+    <div class="row">
+        <div class="col s12 m9 l10">
+            <!--h1>@@title</h1-->
+            <nav>
+                <ul class="left">
+                    <li class="active">
+                        <a href="/TrafficPackages/Index">Traffic Packages</a>
+                    </li>
+                    <li>
+                        <a href="/Websites/Index">Websites</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
 
-<div>
-    <h4>TrafficPackage</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Website.Url)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Website.Url)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CreatedDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CreatedDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Path)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Path)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.QueryString)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.QueryString)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Payload)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Payload)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IsChecked)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IsChecked)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IsAttack)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IsAttack)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LengthOfArguments)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LengthOfArguments)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NumberOfArguments)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NumberOfArguments)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NumberOfDigitsInArguments)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NumberOfDigitsInArguments)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NumberOfOtherCharInArguments)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NumberOfOtherCharInArguments)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NumberOfDigitsInPath)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NumberOfDigitsInPath)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NumberOfSpecialCharInArguments)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NumberOfSpecialCharInArguments)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LengthOfPath)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LengthOfPath)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LengthOfRequest)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LengthOfRequest)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NumberOfLettersInArguments)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NumberOfLettersInArguments)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NumberOfLettersCharInPath)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NumberOfLettersCharInPath)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NumberOfSepicalCharInPath)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NumberOfSepicalCharInPath)
-        </dd>
-
-    </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.TrafficPackageId }) |
-    @Html.ActionLink("Back to List", "Index")
+<!-- /Breadcrumb -->
+<!-- General -->
+<div class="card">
+    <div class="title">
+        <h5>Traffic Package Information</h5>
+        <a class="minimize" href="#">
+            <i class="mdi-navigation-expand-less"></i>
+        </a>
+    </div>
+    <div class="content">
+        <!-- Main Info -->
+        <div class="card">
+            <div class="title">
+                <h5>Main Info</h5>
+                <a class="minimize" href="#">
+                    <i class="mdi-navigation-expand-less"></i>
+                </a>
+            </div>
+            <div class="content">
+
+                <div class="row no-margin-top">
+                    <div class="col s12 l3">
+                        <label for="ecommerce-product-keywords" class="setting-title">
+                            @Html.DisplayNameFor(model => model.Website.Url)
+                        </label>
+                    </div>
+                    <div class="col s12 l9">
+                        <div class="input-field no-margin-top">
+                            @Html.DisplayFor(model => model.Website.Url)
+                        </div>
+                    </div>
+                </div>
+                <div class="row no-margin-top">
+                    <div class="col s12 l3">
+                        <label for="ecommerce-product-keywords" class="setting-title">
+                            @Html.DisplayNameFor(model => model.Path)
+                        </label>
+                    </div>
+                    <div class="col s12 l9">
+                        <div class="input-field no-margin-top">
+                            @Html.DisplayFor(model => model.Path)
+                        </div>
+                    </div>
+                </div>
+                <div class="row no-margin-top">
+                    <div class="col s12 l3">
+                        <label for="ecommerce-product-keywords" class="setting-title">
+                            @Html.DisplayNameFor(model => model.QueryString)
+                        </label>
+                    </div>
+                    <div class="col s12 l9">
+                        <div class="input-field no-margin-top">
+                            @Html.DisplayFor(model => model.QueryString)
+                        </div>
+                    </div>
+                </div>
+                <div class="row no-margin-top">
+                    <div class="col s12 l3">
+                        <label for="ecommerce-product-keywords" class="setting-title">
+                            @Html.DisplayNameFor(model => model.Payload)
+                        </label>
+                    </div>
+                    <div class="col s12 l9">
+                        <div class="input-field no-margin-top">
+                            @Html.TextAreaFor(model => model.Payload, new { @style = "min-height: 100px" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row no-margin-top">
+                    <div class="col s12 l3">
+                        <label for="ecommerce-product-keywords" class="setting-title">
+                            @Html.DisplayNameFor(model => model.IsAttack)
+                        </label>
+                    </div>
+                    <div class="col s12 l9">
+                        <div class="input-field no-margin-top">
+                           @Html.DisplayFor(model => model.IsAttack, new { htmlAttributes = new { @style = "opacity:1;visibility: visible" } })
+                        </div>
+                    </div>
+                </div>
+                <div class="row no-margin-top">
+                    <div class="col s12 l3">
+                        <label for="ecommerce-product-keywords" class="setting-title">
+                            @Html.DisplayNameFor(model => model.IsChecked)
+                        </label>
+                    </div>
+                    <div class="col s12 l9">
+                        <div class="input-field no-margin-top">
+                            @Html.DisplayFor(model => model.IsChecked, new { htmlAttributes = new { style = "opacity:1;visibility: visible" } })
+                        </div>
+                    </div>
+                </div>
+                <div class="row no-margin-top">
+                    <div class="col s12 l3">
+                        <label for="ecommerce-product-keywords" class="setting-title">
+                            @Html.DisplayNameFor(model => model.CreatedDate)
+                        </label>
+                    </div>
+                    <div class="col s12 l9">
+                        <div class="input-field no-margin-top">
+                            @Html.DisplayFor(model => model.CreatedDate)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Main Info -->
+        <!-- Detail Info -->
+        <div class="card">
+            <div class="title">
+                <h5>Detail Info</h5>
+                <a class="minimize" href="#">
+                    <i class="mdi-navigation-expand-less"></i>
+                </a>
+            </div>
+            <div class="content">
+                <div class="row no-margin-top">
+                    <div class="col s12 l3">
+                        <label for="ecommerce-product-keywords" class="setting-title">
+                            @Html.DisplayNameFor(model => model.LengthOfArguments)
+                        </label>
+                    </div>
+                    <div class="col s12 l9">
+                        <div class="input-field no-margin-top">
+                            @Html.DisplayFor(model => model.LengthOfArguments)
+                        </div>
+                    </div>
+                </div>
+                <div class="row no-margin-top">
+                    <div class="col s12 l3">
+                        <label for="ecommerce-product-keywords" class="setting-title">
+                            @Html.DisplayNameFor(model => model.NumberOfArguments)
+                        </label>
+                    </div>
+                    <div class="col s12 l9">
+                        <div class="input-field no-margin-top">
+                            @Html.DisplayFor(model => model.NumberOfArguments)
+                        </div>
+                    </div>
+                </div>
+                <div class="row no-margin-top">
+                    <div class="col s12 l3">
+                        <label for="ecommerce-product-keywords" class="setting-title">
+                            @Html.DisplayNameFor(model => model.NumberOfDigitsInArguments)
+                        </label>
+                    </div>
+                    <div class="col s12 l9">
+                        <div class="input-field no-margin-top">
+                            @Html.DisplayFor(model => model.NumberOfDigitsInArguments)
+                        </div>
+                    </div>
+                </div>
+                <div class="row no-margin-top">
+                    <div class="col s12 l3">
+                        <label for="ecommerce-product-keywords" class="setting-title">
+                            @Html.DisplayNameFor(model => model.NumberOfOtherCharInArguments)
+                        </label>
+                    </div>
+                    <div class="col s12 l9">
+                        <div class="input-field no-margin-top">
+                            @Html.DisplayFor(model => model.NumberOfOtherCharInArguments)
+                        </div>
+                    </div>
+                </div>
+                <div class="row no-margin-top">
+                    <div class="col s12 l3">
+                        <label for="ecommerce-product-keywords" class="setting-title">
+                            @Html.DisplayNameFor(model => model.NumberOfSpecialCharInArguments)
+                        </label>
+                    </div>
+                    <div class="col s12 l9">
+                        <div class="input-field no-margin-top">
+                            @Html.DisplayFor(model => model.NumberOfSpecialCharInArguments)
+                        </div>
+                    </div>
+                </div>
+                <div class="row no-margin-top">
+                    <div class="col s12 l3">
+                        <label for="ecommerce-product-keywords" class="setting-title">
+                            @Html.DisplayNameFor(model => model.NumberOfLettersInArguments)
+                        </label>
+                    </div>
+                    <div class="col s12 l9">
+                        <div class="input-field no-margin-top">
+                            @Html.DisplayFor(model => model.NumberOfLettersInArguments)
+                        </div>
+                    </div>
+                </div>
+                <div class="row no-margin-top">
+                    <div class="col s12 l3">
+                        <label for="ecommerce-product-keywords" class="setting-title">
+                            @Html.DisplayNameFor(model => model.LengthOfPath)
+                        </label>
+                    </div>
+                    <div class="col s12 l9">
+                        <div class="input-field no-margin-top">
+                            @Html.DisplayFor(model => model.LengthOfPath)
+                        </div>
+                    </div>
+                </div>
+                <div class="row no-margin-top">
+                    <div class="col s12 l3">
+                        <label for="ecommerce-product-keywords" class="setting-title">
+                            @Html.DisplayNameFor(model => model.NumberOfLettersCharInPath)
+                        </label>
+                    </div>
+                    <div class="col s12 l9">
+                        <div class="input-field no-margin-top">
+                            @Html.DisplayFor(model => model.NumberOfLettersCharInPath)
+                        </div>
+                    </div>
+                </div>
+                <div class="row no-margin-top">
+                    <div class="col s12 l3">
+                        <label for="ecommerce-product-keywords" class="setting-title">
+                            @Html.DisplayNameFor(model => model.NumberOfSepicalCharInPath)
+                        </label>
+                    </div>
+                    <div class="col s12 l9">
+                        <div class="input-field no-margin-top">
+                            @Html.DisplayFor(model => model.NumberOfSepicalCharInPath)
+                        </div>
+                    </div>
+                </div>
+                <div class="row no-margin-top">
+                    <div class="col s12 l3">
+                        <label for="ecommerce-product-keywords" class="setting-title">
+                            @Html.DisplayNameFor(model => model.LengthOfRequest)
+                        </label>
+                    </div>
+                    <div class="col s12 l9">
+                        <div class="input-field no-margin-top">
+                            @Html.DisplayFor(model => model.LengthOfRequest)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Detail Info -->
+    </div>
+</div>
+<!-- /General -->
+<p class="right-align">
+    <a class="btn" href=@("/TrafficPackages/Edit/" + Model.TrafficPackageId)>Edit</a>
+    <a class="btn" href="/TrafficPackages/Index">Back To List</a>
 </p>

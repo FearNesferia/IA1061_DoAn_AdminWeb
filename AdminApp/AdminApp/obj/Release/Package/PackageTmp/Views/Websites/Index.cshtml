@@ -3,37 +3,94 @@
 @{
     ViewBag.Title = "Index";
 }
+<!-- Breadcrumb -->
+<div class="ecommerce-title">
 
-<h2>Index</h2>
+    <div class="row">
+        <div class="col s12 m9 l10">
+            <!--h1>@@title</h1-->
+            <nav>
+                <ul class="left">
+                    <li>
+                        <a href="/TrafficPackages/Index">Traffic Packages</a>
+                    </li>
+                    <li class="active">
+                        <a href="/Websites/Index">Websites</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Url)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsDetecMode)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Url)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsDetecMode)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.WebsiteId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.WebsiteId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.WebsiteId })
-        </td>
-    </tr>
+</div>
+<!-- /Breadcrumb -->
+<!-- Websites -->
+<div class="card">
+    <div class="title">
+        <h5>Websites</h5>
+        <div class="btn-group right">
+            <a href="" class="btn btn-small z-depth-0"><i class="mdi mdi-content-add"></i></a>
+            <a href="" class="btn btn-small red lighten-1 z-depth-0"><i class="mdi mdi-action-delete"></i></a>
+        </div>
+    </div>
+    <div class="content">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Select</th>
+                        <th>@Html.DisplayNameFor(model => model.Url)</th>
+                        <th>@Html.DisplayNameFor(model => model.IsDetecMode)</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <th>
+                                <input type="checkbox" id="@item.WebsiteId" />
+                                <label for="@item.WebsiteId"></label>
+                            </th>
+                            <td>@Html.DisplayFor(modelItem => item.Url)</td>
+                            <td>
+                                <p class="switch">
+                                    <label>
+                                        <input name="isDetectMode" id=@("check-switch-" + item.WebsiteId) type="checkbox" @(item.IsDetecMode ? "checked" : "") />
+                                        <span class="lever"></span>
+                                    </label>
+                                </p>
+                            </td>
+                            <td>
+                                @*<span class="btn  btn-small z-depth-0"><i class="mdi mdi-content-save"></i></span>*@
+                                <button type="submit" value="Save" class="btn" onclick="changeMode(@item.WebsiteId)">SAVE</button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+    </div>
+</div>
+<!-- /Websites -->
+@section scripts{
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>     
+    <script type="text/javascript">
+        function changeMode(websiteId) {
+            var data = { websiteId: websiteId, isDetectMode: $("#check-switch-" + websiteId).prop('checked') }
+            $.ajax({
+                url: "@Url.Action("ChangeMode","Websites")",
+                type: "post",
+                dataType: 'json',
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(data),
+                success: function (response) {
+                    alert("Success");
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert("Error");
+                    window.location.replace("@Url.Action("Index", "Websites")");
+                }
+            });
+        }
+    </script>
 }
-
-</table>

@@ -1,7 +1,45 @@
-﻿
+﻿@model IEnumerable<IISServerModules.Models.TrafficPackage>
+
 @{
     ViewBag.Title = "Index";
 }
 
 <h2>Index</h2>
-
+<div id="chartContainer" style="height: 400px; width: 70%;"></div>
+<script src="~/assets/jquery/jquery.min.js"></script>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var redDataPoints = @Html.Raw(ViewBag.listRed);
+        var blueDataPoints = @Html.Raw(ViewBag.listBlue);
+        var chart = new CanvasJS.Chart("chartContainer", {
+            animationEnabled: true,
+            zoomEnabled: true,
+            title: {
+                text: "Sample of distributions of data points from the CSIC 2010 dataset."
+            },
+            axisX: {
+                title: "Number Of Digits In Arguments",
+                minimum: 0,
+                maximum: @ViewBag.maxX,
+            },
+            axisY: {
+                title: "Length Of Arguments",
+                minimum: 0,
+                maximum: @ViewBag.maxY,
+            },
+            data: [{
+                type: "scatter",
+                toolTipContent: " <b>X=</b>{x}<br/><b>Y=</b>{y}",
+                color: "red",
+                dataPoints: redDataPoints,
+            }, {
+                    type: "scatter",
+                    toolTipContent: "{x} <b>Digits</b><br/><b>Length: </b>{y}",
+                    color: "blue",
+                    dataPoints: blueDataPoints,
+                }]
+        });
+        chart.render();
+    })
+</script>

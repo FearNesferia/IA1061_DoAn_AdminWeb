@@ -3,43 +3,69 @@
 @{
     ViewBag.Title = "Create";
 }
+<!-- Breadcrumb -->
+<div class="ecommerce-title">
 
-<h2>Create</h2>
+    <div class="row">
+        <div class="col s12 m9 l10">
+            <!--h1>@@title</h1-->
+            <nav>
+                <ul class="left">
+                    <li>
+                        <a href="/TrafficPackages/Index">Traffic Packages</a>
+                    </li>
+                    <li class="active">
+                        <a href="/Websites/Index">Websites</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
 
-@using (Html.BeginForm()) 
+</div>
+<!-- /Breadcrumb -->
+
+@using (Html.BeginForm("Create", "Websites", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Website</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Url, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Url, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Url, "", new { @class = "text-danger" })
-            </div>
+       <!-- General -->
+    <div class="card">
+        <div class="title">
+            <h5>Main Info</h5>
+            <a class="minimize" href="#">
+                <i class="mdi-navigation-expand-less"></i>
+            </a>
         </div>
+        <div class="content">
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.IsDetecMode, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.IsDetecMode)
-                    @Html.ValidationMessageFor(model => model.IsDetecMode, "", new { @class = "text-danger" })
+            <div class="row no-margin-top">
+                <div class="col s12 l3">
+                    @Html.LabelFor(model => model.Url, new { @class = "setting-title" })
+                </div>
+                <div class="col s12 l9">
+                    <div class="input-field no-margin-top disabled">
+                        @Html.EditorFor(model => model.Url, new { htmlAttributes = new { placeholder = "Url" } })
+                    </div>
+                </div>
+            </div>
+            <div class="row no-margin-top" style="min-height:50px">
+                <div class="col s12 l3">
+                    @Html.LabelFor(model => model.IsDetecMode, new { @class = "setting-title" })
+                </div>
+                <div class="col s12 l9">
+                    <div class="input-field no-margin-top">
+                        @Html.EditorFor(model => model.IsDetecMode, new { htmlAttributes = new { style = "opacity:1;visibility: visible" } })
+                    </div>
                 </div>
             </div>
         </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
     </div>
-}
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+        <!-- /General -->
+        <!-- Save and Cancel buttons -->
+    <p class="right-align">
+        <button class="btn" type="submit">Save</button>
+        <a class="btn" href="/Websites/Index">Cancel</a>
+    </p>
+        <!-- /Save and Cancel buttons -->
+}

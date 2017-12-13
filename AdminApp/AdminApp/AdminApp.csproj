@@ -1150,6 +1150,11 @@
     <Content Include="Scripts\jquery-3.2.1.min.js" />
     <Content Include="Scripts\jquery-3.2.1.slim.js" />
     <Content Include="Scripts\jquery-3.2.1.slim.min.js" />
+    <Content Include="Scripts\jquery-fields-master\example.html" />
+    <Content Include="Scripts\jquery-fields-master\jquery-fields.js" />
+    <Content Include="Scripts\jquery-fields-master\jquery-fields.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -1169,11 +1174,16 @@
     <Compile Include="Migrations\201711221006583_miv1.Designer.cs">
       <DependentUpon>201711221006583_miv1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712130915526_test1.cs" />
+    <Compile Include="Migrations\201712130915526_test1.Designer.cs">
+      <DependentUpon>201712130915526_test1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DataHandler\PakageDBContext.cs" />
     <Compile Include="Models\DataHandler\R\AnalyzePacket.cs" />
     <Compile Include="Models\DataHandler\R\UpdateData.cs" />
     <Compile Include="Models\TrafficPackage.cs" />
+    <Compile Include="Models\TrafficPackageEditModel.cs" />
     <Compile Include="Models\TrafficPackageModel.cs" />
     <Compile Include="Models\Website.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -1195,7 +1205,11 @@
     <Content Include="Views\Websites\Details.cshtml" />
     <Content Include="Views\Websites\Edit.cshtml" />
     <Content Include="Views\Websites\Index.cshtml" />
+    <Content Include="Views\Home\Index2.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Scripts\jquery-fields-master\jquery-fields.coffee" />
+    <Content Include="Scripts\jquery-fields-master\README.md" />
+    <Content Include="Views\Home\DataMiningIndex.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1209,6 +1223,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201711221006583_miv1.resx">
       <DependentUpon>201711221006583_miv1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712130915526_test1.resx">
+      <DependentUpon>201712130915526_test1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
